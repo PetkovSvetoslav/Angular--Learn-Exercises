@@ -1,0 +1,18 @@
+
+<section id="details" style="" *ngIf="post">
+  <img class="card-img-top" alt='' src="{{post.imgUrl}}"/>
+  <div class="card-body">
+    <h2 class="card-title">{{post.title}}</h2>
+    <h5 class="card-text" >Description:</h5>
+    <p class="card-text" >{{post.context}}</p>
+    <h5 class="card-text" >Created by:</h5>
+    <p class="card-text" >{{post.username}}</p>
+    <div class="container" *ngIf="isCreator()||authService.isAdmin()">
+      <button (click)="deletePost()" type="button" class="btn btn-outline-danger">Delete</button>
+      <button (click)="editPost()" type="button" class="btn btn-outline-warning">Edit</button>
+    </div>
+    <button routerLink="/comments/{{post._id}}" class="btn btn-outline-success" >Comments</button>
+    <button (click)="goBack()" type="button" class="btn btn-outline-info" >Back</button>
+  </div>
+</section>
+

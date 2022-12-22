@@ -1,0 +1,47 @@
+<div style="display: flex;flex-direction: row;justify-content: space-around"  >
+
+  <div style="width: 30%">
+    <form (ngSubmit)="createNewPost()" #createNewForm="ngForm">
+      <h2>{{title_head}}</h2>
+      <div class="form-group">
+        <label for="imageUrl">Image url:</label>
+        <input type="text"  [(ngModel)]="post.imgUrl" minlength="4" #imgUrl = "ngModel" required name="imgUrl" class="form-control" id="imageUrl"
+               aria-describedby="imgurlHelp"
+               placeholder="Enter image url"/>
+      </div>
+      <div [hidden]="imgUrl.valid || imgUrl.pristine" class="alert alert-dark">
+        Please provide URL address
+      </div>
+      <div class="form-group">
+        <label for="title">Title of post:</label>
+        <input [(ngModel)]="post.title" name="title" #title="ngModel" minlength="3" type="text" class="form-control" id="title"
+               aria-describedby="titleHelp"
+               placeholder="Enter title"/>
+
+      <div [hidden]="title.valid || title.pristine" class="alert alert-dark">
+       Title should be at least 3 characters long
+      </div>
+      <div *ngIf="!isCapital()" class="alert alert-dark">
+        Title should start with capital letter
+      </div>
+      </div>
+      <div class="form-group">
+        <label for="context">Description:</label>
+        <input name="context" [(ngModel)]="post.context" #context="ngModel" minlength="5" type="text" class="form-control" id="context"
+               aria-describedby="descriptionHelp"
+               placeholder="Enter description"/>
+        <div [hidden]="context.valid || context.pristine" class="alert alert-dark">
+          Description should be at least 5 characters long
+        </div>
+      </div>
+      <button [disabled]="createNewForm.form.invalid||!isCapital()"  class="btn btn-outline-info">Submit</button>
+      <button (click)="goBack()" type="button" class="btn btn-outline-info" >Back</button>
+    </form>
+
+  </div>
+  <div style="width:20%">
+    <h5>Your post will look like this:</h5>
+    <app-post [post]="post"></app-post>
+  </div>
+
+</div>

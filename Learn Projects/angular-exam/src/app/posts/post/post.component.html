@@ -1,0 +1,13 @@
+<div *ngIf="post">
+<div class="card m-1">
+  <img class="card-img-top"  onError="this.src='./assets/errorurl.jpg'"  [src]="post.imgUrl" alt =""/>
+
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-title">{{post.context}}</p>
+    <div *ngIf="router_.url.endsWith('/')">
+      <button routerLink="/details/{{post._id}}" class="btn btn-outline-success" >Details</button>
+    </div>
+  </div>
+</div>
+</div>

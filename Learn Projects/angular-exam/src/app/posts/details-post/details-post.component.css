@@ -1,0 +1,10 @@
+#details {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-direction: column;
+  width: 20%
+}
+button{
+  margin: 0.5rem;
+}

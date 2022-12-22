@@ -1,0 +1,24 @@
+<form  class="container" (ngSubmit)="signIn()" #loginForm="ngForm">
+  <h2>Sign in:</h2>
+
+  <div class="form-group">
+    <label for="username">User name:</label>
+    <input  required [(ngModel)]="model.username"
+           #name="ngModel" type="text" class="form-control"
+           name="username"  id="username" aria-describedby="usernameHelp"
+           placeholder="Enter user name"/>
+    <div [hidden]="name.valid || name.pristine" class="alert alert-dark">
+      Please provide your name
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" required [(ngModel)]="model.password"
+           #password="ngModel" minlength="4"
+           name="password" class="form-control" id="password" placeholder="Password"/>
+    <div [hidden]="password.valid || password.pristine" class="alert alert-dark">
+      Password must have at least 4 characters!
+    </div>
+  </div>
+  <button class="btn btn-primary" [disabled]="loginForm.form.invalid">Sign in</button>
+</form>
